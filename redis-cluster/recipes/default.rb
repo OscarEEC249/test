@@ -7,5 +7,5 @@
 include_recipe 'redis::install_from_package'
 
 execute 'apache_configtest' do
-    command '/usr/sbin/apachectl configtest'
+    command 'redis-server'
   end

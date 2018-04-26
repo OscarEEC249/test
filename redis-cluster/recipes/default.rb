@@ -6,7 +6,7 @@
 
 include_recipe 'redis::install_from_package'
 
-bash 'verify_redis_running' do
+bash 'name' do
   code <<-EOH
   redis_server
   EOH

@@ -8,7 +8,7 @@ include_recipe 'redis::install_from_package'
 
 bash 'name' do
   code <<-EOH
-  redis_server
+  redis-server
   EOH
   action :run
 end

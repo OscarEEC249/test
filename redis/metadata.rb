@@ -1,4 +1,4 @@
-name:            "redis"
+name             "redis"
 maintainer       "Benjamin Black"
 maintainer_email "b@b3k.us"
 license          "Apache 2.0"

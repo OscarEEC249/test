@@ -6,6 +6,9 @@
 
 include_recipe 'redis::install_from_package'
 
-execute 'apache_configtest' do
-    command 'redis-server'
-  end
+bash 'verify_redis_running' do
+  code <<-EOH
+  redis_server
+  EOH
+  action :run
+end

@@ -33,7 +33,7 @@ service 'redis-server' do
 end
 
 template '/etc/redis/redis.conf' do
-  source 'redistemplate.conf.erb'
+  source 'redistemplate.config.erb'
   variables 'public_ip' => instance['public_ip']
   action :create
 end

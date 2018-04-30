@@ -12,12 +12,18 @@ if instances.count == 6
   ips_segment.chomp(' ')
   setup_cmd = '/usr/local/share/redis/src/redis-trib.rb create --replicas 1 '
   setup_cmd.concat(ips_segment)
-  Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
-  bash 'deploy-cluster' do
-    code <<-EOH
-    echo yes | #{setup_cmd}
-    EOH
-    action :run
+
+  if instance[0]
+    Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
+    bash 'deploy-cluster' do
+      code <<-EOH
+      echo yes | #{setup_cmd}
+      EOH
+      #retries 3
+      #retry_delay 30
+      action :run
+    end
+
   end
 else
   Chef::Log.info("********** Not enough nodes to setup a cluster. Nodes count: '#{instances.count}' **********")

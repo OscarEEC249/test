@@ -12,8 +12,8 @@ if instances.count == 6
   ips_segment.chomp(' ')
   setup_cmd = '/usr/local/share/redis/src/redis-trib.rb create --replicas 1 '
   setup_cmd.concat(ips_segment)
-
-  if instance[0]
+  
+  if instance['instance_name'] == "test1"
     Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
     bash 'deploy-cluster' do
       code <<-EOH

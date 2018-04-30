@@ -14,7 +14,7 @@ install_from_release('rediscluster') do
   home_dir     node[:rediscluster][:home_dir]
   version      node[:rediscluster][:version]
   action       :build_with_make
-  not_if{ File.exists?(File.join(node[:rediscluster][:home_dir], 'redis-server')) }
+  not_if { File.exist?(File.join(node[:rediscluster][:home_dir], 'redis-server')) }
 end
 
 package 'ruby' do

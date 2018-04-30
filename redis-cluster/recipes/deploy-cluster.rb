@@ -13,9 +13,9 @@ if instances.count == 6
   setup_cmd = '/usr/local/share/redis/src/redis-trib.rb create --replicas 1 '
   setup_cmd.concat(ips_segment)
 
-  prueba = search(this_instance)
+  current_instance = search('aws_opsworks_instance', 'self:true')
 
-  if prueba['instance_name'] == test1
+  if current_instance['instance_name'] == test1
     Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
     bash 'deploy-cluster' do
       code <<-EOH

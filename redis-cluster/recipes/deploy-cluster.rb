@@ -15,7 +15,7 @@ if instances.count == 6
 
   current_instance = search('aws_opsworks_instance', 'self:true')
 
-  if current_instance['instance_name'] == test1
+  if current_instance['instance_name'] == 'test1'
     Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
     bash 'deploy-cluster' do
       code <<-EOH

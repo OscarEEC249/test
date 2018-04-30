@@ -6,7 +6,7 @@
 include_recipe 'redis::install_from_package'
 include_recipe 'install_from'
 
-instance = search('aws_opsworks_instance', "self:true").first
+instance = search('aws_opsworks_instance', 'self:true').first
 Chef::Log.info("********** The instance's public ip is '#{instance['public_ip']}' **********")
 
 install_from_release('rediscluster') do

@@ -1,6 +1,8 @@
 instances = search('aws_opsworks_instance')
 port = 6379
 
+Chef::Log.info("********** Hay '#{instances.count}' **********")
+
 if instances.count == 6
   Chef::Log.info("********** Setting up cluster: '#{instances.count}' **********")
   ips_segment = ''

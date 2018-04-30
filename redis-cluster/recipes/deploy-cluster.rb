@@ -1,8 +1,6 @@
 instances = search('aws_opsworks_instance')
 port = 6379
 
-Chef::Log.info("********** Hay '#{instances.count}' **********")
-
 if instances.count == 6
   Chef::Log.info("********** Setting up cluster: '#{instances.count}' **********")
   ips_segment = ''
@@ -13,7 +11,8 @@ if instances.count == 6
   setup_cmd = '/usr/local/share/redis/src/redis-trib.rb create --replicas 1 '
   setup_cmd.concat(ips_segment)
 
-  current_instance = node['opsworks']['instance']['hostname']
+  current_instance = search('aws_opsworks_instance', 'instance', 'hostname')
+  #  current_instance = search('aws_opsworks_instance', 'self:true').first
 
   if current_instance == 'test1'
     Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")

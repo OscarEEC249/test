@@ -1,0 +1,19 @@
+daemonize yes
+
+protected-mode no
+
+supervised no
+
+loglevel debug
+
+appendonly no
+
+bind 127.0.0.1 <%= node[:ipaddress] %>
+
+## CLUSTER CONFIG ##
+
+cluster-enabled yes
+
+cluster-config-file nodes-6379.conf
+
+cluster-node-timeout 5000

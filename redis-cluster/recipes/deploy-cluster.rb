@@ -19,8 +19,6 @@ if instances.count == 6
       code <<-EOH
       echo yes | #{setup_cmd}
       EOH
-      #retries 3
-      #retry_delay 30
       action :run
     end
 

@@ -14,9 +14,10 @@ if instances.count == 6
   # current_instance = search('aws_opsworks_instance', 'instance', 'hostname').first
   # current_instance = node["opsworks"]["instance"]["layers"][0]
   current_instance = search('aws_opsworks_instance', 'self:true').first
-  Chef::Log.info("Value of current_instance '#{current_instance['hostname']}'")
+  instance_name = current_instance['hostname']
+  Chef::Log.info("Value of current_instance '#{instance_name}'")
 
-  if current_instance['hostname'] == 'test1'
+  if instance_name == 'test1'
     Chef::Log.info("********** Command to execute: '#{setup_cmd}' **********")
     bash 'deploy-cluster' do
       code <<-EOH

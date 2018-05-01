@@ -11,8 +11,8 @@ if instances.count == 6
   setup_cmd = '/usr/local/share/redis/src/redis-trib.rb create --replicas 1 '
   setup_cmd.concat(ips_segment)
 
-  #current_instance = search('aws_opsworks_instance', 'instance', 'hostname').first
-  current_instance = node["opsworks"]["instance"]["hostname"]
+  # current_instance = search('aws_opsworks_instance', 'instance', 'hostname').first
+  current_instance = node["opsworks"]["instance"]["layers"][0]
   Chef::Log.info("Value of current_instance '#{current_instance}'")
 
   if current_instance == 'test1'

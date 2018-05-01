@@ -12,6 +12,7 @@ if instances.count == 6
   setup_cmd.concat(ips_segment)
 
   current_instance = search('aws_opsworks_instance', 'instance', 'hostname')
+  Chef::Log.info("Value of current_instance '#{current_instance}'")
   #  current_instance = search('aws_opsworks_instance', 'self:true').first
 
   if current_instance == 'test1'
